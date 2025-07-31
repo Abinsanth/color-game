@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spot the Different Color</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-100 flex flex-col items-center p-4">
+  <h1 class="text-3xl font-bold mb-4 text-gray-800">Spot the Different Color!</h1>
+
+  <div id="info" class="mb-4 flex gap-8 text-lg font-medium text-gray-700">
+    <p id="levelText"></p>
+    <p id="timerText"></p>
+  </div>
+  
+  <div id="playerInput" class="flex flex-col items-center gap-3 mb-4">
+    <input type="text" id="playerNameInput" placeholder="Enter your name"
+      class="border border-gray-300 rounded-lg p-2 w-64 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+    <button id="startBtn"
+      class="bg-blue-600 text-white rounded-lg px-4 py-2 hover:bg-blue-700 transition">
+      Start Game
+    </button>
+  </div>
+
+  <div id="gameBoard" class="grid gap-0"></div>
+
+  <div id="gameOver" class="hidden flex flex-col items-center gap-4 mt-6">
+    <h2 class="text-2xl font-bold text-red-600">Game Over!</h2>
+    <p id="finalScore" class="text-lg font-semibold"></p>
+    <button id="restartBtn"
+      class="bg-green-600 text-white rounded-lg px-4 py-2 hover:bg-green-700 transition">
+      Restart
+    </button>
+  </div>
+
+  <div id="leaderboard"
+    class="hidden w-full max-w-xs mt-6 bg-white rounded-xl shadow p-4 text-left">
+    <!-- Leaderboard content is filled dynamically -->
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+    import { getFirestore } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyALPvwOYg6u2luefUTHHNKX8b1koBoSo-4",
+      authDomain: "color-game-d40e3.firebaseapp.com",
+      projectId: "color-game-d40e3",
+      storageBucket: "color-game-d40e3.firebasestorage.app",
+      messagingSenderId: "636592811236",
+      appId: "1:636592811236:web:b26345a16dfb490c1890f1"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    window.db = db; // Firestore available globally
+  </script>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>
