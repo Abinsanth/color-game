@@ -1,0 +1,25 @@
+.cell {
+  aspect-ratio: 1 / 1;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+.cell:hover {
+  transform: scale(1.05);
+}
+
+.dimmed {
+  opacity: 0.3;
+  transition: opacity 0.3s ease;
+}
+
+@keyframes highlightPulse {
+  0% { transform: scale(1); box-shadow: 0 0 0px yellow; }
+  50% { transform: scale(1.2); box-shadow: 0 0 20px yellow; }
+  100% { transform: scale(1); box-shadow: 0 0 0px yellow; }
+}
+
+.highlighted {
+  animation: highlightPulse 1s ease;
+  z-index: 10;
+}
